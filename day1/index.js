@@ -1,4 +1,4 @@
-function login() {
+function performLogin() {
 	//lesson 3: async function call here... any function which makes the process wait
 	// setTimeout(() => {
 	// 	console.log("login invoked");
