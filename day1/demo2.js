@@ -1,9 +1,4 @@
-var fName = "chandan";
-var lName = "naresh";
-var email = "chandan.sutradhar@gmail.com";
-var mobileNo = "8080811145";
-var password = "somesecret";
-var isAdmin;
+var customerName = "chandan";
 
 function doRegister() {
 	console.log("do register function invoked");
@@ -14,6 +9,10 @@ function validateEmail() {}
 function validatePassword() {}
 
 class Customer {
+	//note, in case of attributes/variable defined within the class,
+	//use class context to define the attribute name
+	name = "chandan ";
+
 	doRegister() {
 		console.log("do register Method invoked");
 	}
@@ -21,6 +20,9 @@ class Customer {
 
 doRegister();
 var custObj = new Customer();
+
+custObj.name;
+
 //note: methods are invoked via class object
 custObj.doRegister();
 
