@@ -25,3 +25,18 @@ function togglePassword() {
 		: password.setAttribute("type", "password");
 	togglePasswordIcon.classList.toggle("bi-eye");
 }
+
+const icon = document.getElementById("togglePassword");
+icon.addEventListener("click", (event) => {
+	alert(event);
+	console.log(event);
+});
+
+const isAdmin = true;
+isAdmin ? console.log(true) : console.log(false);
+
+if (isAdmin) {
+	console.log("true");
+} else {
+	console.log("false");
+}
