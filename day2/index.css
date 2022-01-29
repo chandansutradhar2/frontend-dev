@@ -1,0 +1,5 @@
+.invalid-email {
+	color: red;
+	font-size: small;
+	visibility: hidden;
+}

@@ -1,4 +1,4 @@
-//example of var scope and let keyword, and cost
+//example of var scope and let keyword, and const
 
 for (let index = 0; index < 10; index++) {
 	//var has default global scope
