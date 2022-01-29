@@ -3,3 +3,8 @@
 	font-size: small;
 	visibility: hidden;
 }
+
+.login {
+	justify-content: center;
+	margin-top: 15%;
+}

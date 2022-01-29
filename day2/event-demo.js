@@ -16,3 +16,12 @@ function validateEmail() {
 		document.getElementById("invalid-email").style.visibility = "hidden";
 	}
 }
+
+function togglePassword() {
+	const togglePasswordIcon = document.getElementById("togglePassword");
+	const password = document.getElementById("password");
+	password.getAttribute("type") === "password"
+		? password.setAttribute("type", "text")
+		: password.setAttribute("type", "password");
+	togglePasswordIcon.classList.toggle("bi-eye");
+}

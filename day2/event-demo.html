@@ -9,23 +9,31 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>Day 2 Demo's</title>
     <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" onblur="validateEmail()" placeholder="name@example.com">
-            <div class="invalid-email" id="invalid-email">
-                Please enter valid email address.
-            </div>
+    <div class="container login">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input class="form-control" id="email" name="email" placeholder="Enter Email ID" value="">
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input class="form-control" id="password" type="password" name="password" placeholder="Password" value="">
+            <span class="input-group-text">
+                <!-- <i class="far fa-eye" id="togglePassword" style="cursor: pointer"></i> -->
+                <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePassword()"></i>
+
+            </span>
         </div>
         <button type="button" onclick="buttonClicked()" class="btn btn-primary">Login</button>
     </div>
