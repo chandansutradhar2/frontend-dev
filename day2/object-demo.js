@@ -66,3 +66,31 @@ console.log(customerObj.setCustomer());
 
 // const newCustomerObj = new Customer();
 // console.log(newCustomerObj);
+
+let customers = [
+	{
+		name: "chandan",
+		age: 38,
+		isAdmin: false,
+	},
+	{
+		name: "ranjan",
+		age: 32,
+		isAdmin: false,
+	},
+	{
+		name: "samaya",
+		age: 5,
+		isAdmin: true,
+	},
+];
+
+customers.map((ele) => {
+	console.log("map fucntion of objects iterable", ele);
+});
+
+console.log(
+	customerObj.map((ele) => {
+		console.log(ele);
+	}),
+);
