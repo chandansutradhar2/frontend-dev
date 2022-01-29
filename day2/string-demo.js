@@ -65,4 +65,13 @@ console.log(idx);
 //indexOf demo
 let emailId = "chandan@gmail.com";
 let index = emailId.indexOf("@");
-console.log(index);
+//console.log(index);
+
+//demo of includes
+//console.log(emailId.includes("z"));
+
+//string type conversion
+let score = "70";
+score = parseInt(score) + 10;
+score = score.toString();
+console.log(score, typeof score);
