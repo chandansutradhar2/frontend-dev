@@ -1,5 +1,7 @@
 import { Observable } from "rxjs";
 
+isLoggedIn$: Observable;
+
 function fethStockInfoObservable() {
 	return new Observable((obs) => {
 		setInterval(() => {
