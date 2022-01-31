@@ -1,6 +1,7 @@
 import { Customer, IncomeInfo } from "./models/customer.model";
 const incomeInfo = new IncomeInfo("salary", 20000);
 
+Customer.setId();
 const customer = new Customer(
 	"chandan",
 	"naresh",

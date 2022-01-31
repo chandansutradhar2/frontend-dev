@@ -70,7 +70,10 @@ export class Customer extends User {
 		this.expenseInfo = expenseInfo;
 	}
 
-	static setId() {}
+	static setId() {
+		return "";
+	}
+
 	getAccountNo() {
 		return this.accNo;
 	}
