@@ -1,4 +1,5 @@
 import { FormCheck } from "react-bootstrap";
+import { ProductCheck } from "./ProductCheck";
 
 export function Product(props) {
 	console.log(props);
@@ -20,7 +21,7 @@ export function Product(props) {
 								<td>{product.name}</td>
 								<td>{product.price}</td>
 								<td>{product.qty}</td>
-								<FormCheck />
+								<ProductCheck productName={product.name} />
 							</tr>
 						);
 					})}
