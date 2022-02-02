@@ -7,6 +7,7 @@ export function SideBar() {
 				<li>Products</li>
 				<li>Cart</li>
 				<li>Profile</li>
+				<li>Signout</li>
 			</ul>
 		</div>
 	);
