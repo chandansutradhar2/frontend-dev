@@ -16,9 +16,9 @@ function App() {
 	return (
 		<div>
 			<Welcome userName={userName} />
-			<Product product={products[0]} />
-			<Product product={products[1]} />
-			<Product product={products[2]} />
+			{products.map((product) => {
+				return <Product product={product} />;
+			})}
 		</div>
 	);
 }
