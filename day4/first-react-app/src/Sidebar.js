@@ -6,10 +6,10 @@ let adminStyle = {
 };
 
 export function SideBar() {
-	setTimeout(() => {
-		console.log("setTimeout called");
-		adminStyle.backgroundColor = "blue";
-	}, 4000);
+	// setTimeout(() => {
+	// 	console.log("setTimeout called");
+	// 	adminStyle.backgroundColor = "blue";
+	// }, 4000);
 	return (
 		<div>
 			<ul className="sidebar-nav">
