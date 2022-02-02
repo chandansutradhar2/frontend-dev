@@ -1,0 +1,11 @@
+.sidebar-nav {
+	list-style-type: none;
+}
+
+li {
+	color: blue;
+}
+
+.signout {
+	color: black;
+}
