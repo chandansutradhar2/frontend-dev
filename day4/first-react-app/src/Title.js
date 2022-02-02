@@ -6,6 +6,10 @@ export class Welcome extends React.Component {
 		console.log(this.props);
 	}
 	render() {
-		return <h1>Welcome, {this.props.userName} </h1>;
+		return (
+			<h1>
+				Welcome, {this.props.user.name}, Your age is {this.props.user.age}{" "}
+			</h1>
+		);
 	}
 }

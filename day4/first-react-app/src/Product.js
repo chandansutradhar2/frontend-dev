@@ -1,5 +1,8 @@
+import { FormCheck } from "react-bootstrap";
+
 export function Product(props) {
 	console.log(props);
+
 	return (
 		<div>
 			<table>
@@ -11,11 +14,16 @@ export function Product(props) {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>{props.product.name}</td>
-						<td>{props.product.price}</td>
-						<td>{props.product.qty}</td>
-					</tr>
+					{props.products.map((product) => {
+						return (
+							<tr>
+								<td>{product.name}</td>
+								<td>{product.price}</td>
+								<td>{product.qty}</td>
+								<FormCheck />
+							</tr>
+						);
+					})}
 				</tbody>
 			</table>
 		</div>
