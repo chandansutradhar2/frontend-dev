@@ -10,6 +10,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Manager } from "./components/Manager/ExpenseManager";
 import { ExpenseList } from "./components/Expenses/ExpenseList";
+import { ProfileForm } from "./components/Profile/ProfileForm";
 
 function App() {
 	let products = [
@@ -22,8 +23,9 @@ function App() {
 	];
 	return (
 		<div className="container">
-			<Manager />
-			<ExpenseList />
+			{/* <Manager />
+			<ExpenseList /> */}
+			<ProfileForm />
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 export function Login() {
-	function doLogin() {
+	function doLogin(event) {
 		alert("login clicked");
 		console.log(email);
 	}
@@ -30,7 +30,7 @@ export function Login() {
 				<Form.Group className="mb-3" controlId="formBasicCheckbox">
 					<Form.Check type="checkbox" label="Remember Met" />
 				</Form.Group>
-				<Button variant="primary" onClick={() => doLogin()}>
+				<Button variant="primary" onClick={(event) => doLogin(event)}>
 					Login
 				</Button>
 			</Form>
