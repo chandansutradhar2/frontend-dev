@@ -2,8 +2,28 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Fieldset } from "primereact/fieldset";
 import { Button } from "primereact/button";
+import {
+	Investment,
+	INVESTMENT_CATEGORY,
+	INVESTMENT_FREQUENCY,
+	INVESTMENT_TYPE,
+} from "./models/Investment.model";
 
 function App() {
+	function addInvestment() {
+		let vst = new Investment();
+		vst.investmentCategory = INVESTMENT_CATEGORY.MF;
+		vst.amount = 5000;
+		vst.frequency = INVESTMENT_FREQUENCY.MONTHLY;
+		vst.investmentType = INVESTMENT_TYPE.SIP;
+		vst.createdBy = "";
+		vst.createdOn = new Date();
+		vst.id = "002";
+		vst.startDate = new Date("2020");
+		vst.endDate = new Date("2030");
+		console.log(vst);
+	}
+	addInvestment();
 	return (
 		<div className="container">
 			<h5>Toggleable</h5>
