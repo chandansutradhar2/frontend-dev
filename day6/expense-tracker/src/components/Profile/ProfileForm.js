@@ -3,6 +3,14 @@
 
 import { useState } from "react";
 import { Customer } from "../../models/Customer.model";
+import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
+import { Button } from "primereact/button";
+import { Checkbox } from "primereact/checkbox";
+import { RadioButton } from "primereact/radiobutton";
+import { Card } from "primereact/card";
+import { Calendar } from "primereact/calendar";
+import "./ProfileForm.css";
 
 // export const ProfileForm = () => {
 // 	//const [name of the state,setter for the state]=useState('initial value for the state);
@@ -66,17 +74,20 @@ import { Customer } from "../../models/Customer.model";
 // };
 
 export const ProfileForm = () => {
-	console.log("loaded...");
+	console.log("profile renders");
+
 	const [profile, setProfile] = useState({
 		fullName: "",
 		email: "",
 		dob: "",
 		password: "",
 		mobileNo: "",
+		isSalaried: "",
 	});
 
 	const [toggleState, setToggleState] = useState(false);
-	const [filedType, setFieldType] = useState("password");
+	const [fieldType, setFieldType] = useState("password");
+
 	const changeHandler = (ev) => {
 		//console.log(ev.target.value);
 		// setProfile((prevState) => ({
@@ -99,50 +110,73 @@ export const ProfileForm = () => {
 	};
 
 	return (
-		<div>
-			<div>
-				Full Name {profile.fullName}, Email:{profile.email}
-			</div>
+		<Card>
 			<h1>Profile Form</h1>
-			<form style={{ display: "flex", flexDirection: "column" }}>
-				<input
-					id="fullName"
-					type="text"
-					placeholder="Full Name"
-					value={profile.fullName}
-					onChange={changeHandler}
-				/>
-				<input
-					id="email"
-					type="text"
-					placeholder="Email"
-					value={profile.email}
-					onChange={changeHandler}
-				/>
-				<input
-					id="password"
-					type={filedType}
-					placeholder="Password"
-					onChange={changeHandler}
-				/>
-				<button onClick={toggleHandler}>Show/Hide</button>
-				<input
-					id="mobileNo"
-					type="text"
-					placeholder="mobileNo"
-					value={profile.mobileNo}
-					onChange={changeHandler}
-				/>
-				<input
-					type="text"
-					id="dob"
-					placeholder="Enter Date of Birth"
-					value={profile.dob}
-					onChange={changeHandler}
-				/>
-			</form>
-			<button>Create Account</button>
-		</div>
+			<div className="grid form-grid p-fluid">
+				<div className="col-12 md:col-4 full-width">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">
+							<i className="pi pi-user"></i>
+						</span>
+						<InputText placeholder="Full Name" />
+					</div>
+				</div>
+
+				<div className="col-12 md:col-4 full-width">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">DOB</span>
+						<Calendar
+							id="icon"
+							placeholder="dd/mm/yy"
+							value={profile.dob}
+							dateFormat="dd/mm/yy"
+							onChange={(e) =>
+								setProfile((prevState) => ({
+									...prevState,
+									dob: e.value,
+								}))
+							}
+							showIcon
+						/>
+					</div>
+				</div>
+
+				<div className="col-12 md:col-4 full-width">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">@</span>
+						<InputText placeholder="Email" />
+					</div>
+				</div>
+
+				<div className="col-6 md:col-4">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">
+							<i className="pi pi-lock"></i>
+						</span>
+						<InputText placeholder="Password" type={fieldType} />
+						<span className="p-inputgroup-addon" onClick={toggleHandler}>
+							<i className="pi pi-eye"></i>
+						</span>
+					</div>
+				</div>
+				<div className="col-12 md:col-4">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">
+							<i className="pi pi-mobile"></i>
+						</span>
+						<InputText
+							type={"tel"}
+							placeholder="Mobile No"
+							minLength={10}
+							maxLength={10}
+						/>
+					</div>
+				</div>
+			</div>
+			<div className="col-12 md:col-6">
+				<Button label="Save" />
+			</div>
+		</Card>
 	);
 };
 
