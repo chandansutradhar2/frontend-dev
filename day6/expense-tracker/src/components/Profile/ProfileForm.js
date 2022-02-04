@@ -10,6 +10,8 @@ import { Checkbox } from "primereact/checkbox";
 import { RadioButton } from "primereact/radiobutton";
 import { Card } from "primereact/card";
 import { Calendar } from "primereact/calendar";
+import { ToggleButton } from "primereact/togglebutton";
+
 import "./ProfileForm.css";
 
 // export const ProfileForm = () => {
@@ -88,14 +90,6 @@ export const ProfileForm = () => {
 	const [toggleState, setToggleState] = useState(false);
 	const [fieldType, setFieldType] = useState("password");
 
-	const changeHandler = (ev) => {
-		//console.log(ev.target.value);
-		// setProfile((prevState) => ({
-		// 	...prevState,
-		// 	fullName: ev.target.value,
-		// }));
-	};
-
 	const toggleHandler = (ev) => {
 		//preventDefault();
 		ev.preventDefault();
@@ -118,7 +112,15 @@ export const ProfileForm = () => {
 						<span className="p-inputgroup-addon">
 							<i className="pi pi-user"></i>
 						</span>
-						<InputText placeholder="Full Name" />
+						<InputText
+							placeholder="Full Name"
+							onChange={(e) =>
+								setProfile((prevState) => ({
+									...prevState,
+									fullName: e.target.value,
+								}))
+							}
+						/>
 					</div>
 				</div>
 
@@ -144,7 +146,15 @@ export const ProfileForm = () => {
 				<div className="col-12 md:col-4 full-width">
 					<div className="p-inputgroup">
 						<span className="p-inputgroup-addon">@</span>
-						<InputText placeholder="Email" />
+						<InputText
+							placeholder="Email"
+							onChange={(e) =>
+								setProfile((prevState) => ({
+									...prevState,
+									email: e.target.value,
+								}))
+							}
+						/>
 					</div>
 				</div>
 
@@ -153,7 +163,16 @@ export const ProfileForm = () => {
 						<span className="p-inputgroup-addon">
 							<i className="pi pi-lock"></i>
 						</span>
-						<InputText placeholder="Password" type={fieldType} />
+						<InputText
+							placeholder="Password"
+							type={fieldType}
+							onChange={(e) =>
+								setProfile((prevState) => ({
+									...prevState,
+									password: e.target.value,
+								}))
+							}
+						/>
 						<span className="p-inputgroup-addon" onClick={toggleHandler}>
 							<i className="pi pi-eye"></i>
 						</span>
@@ -169,6 +188,30 @@ export const ProfileForm = () => {
 							placeholder="Mobile No"
 							minLength={10}
 							maxLength={10}
+							onChange={(e) =>
+								setProfile((prevState) => ({
+									...prevState,
+									mobileNo: e.target.value,
+								}))
+							}
+						/>
+					</div>
+				</div>
+				<div className="col-6 md:col-4">
+					<div className="p-inputgroup">
+						<ToggleButton
+							checked={profile.isSalaried}
+							onChange={(e) =>
+								setProfile((prevState) => ({
+									...prevState,
+									isSalaried: e.value,
+								}))
+							}
+							onLabel="Salaried"
+							offLabel="Non Salaried"
+							onIcon="pi pi-check"
+							offIcon="pi pi-times"
+							style={{ width: "10em" }}
 						/>
 					</div>
 				</div>
