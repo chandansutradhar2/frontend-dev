@@ -51,6 +51,21 @@ function App() {
 	]);
 
 	const onExpenseAdded = (value) => {
+		//check if the item exists inside the array
+
+		let idx = expenses.findIndex((item) => {
+			return item.title == value.title && item.amount == value.amount
+				? true
+				: false;
+		});
+
+		if (idx !== -1) {
+			//item already exists in the expenses array
+			return;
+		}
+		//1- create a copy of state array
+		const expensesCopy = expenses.slice();
+		//2- create a new element inside the cloned copy
 		let newExp = new Expense(
 			value.title,
 			value.expDate,
@@ -58,10 +73,6 @@ function App() {
 			value.category,
 			value.amount,
 		);
-
-		//1- create a copy of state array
-		const expensesCopy = expenses.slice;
-		//2- create a new element inside the cloned copy
 		expensesCopy.push(newExp);
 		//3 - useState to update new State
 		setExpenses(expensesCopy);
