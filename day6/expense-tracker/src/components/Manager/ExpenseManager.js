@@ -7,7 +7,6 @@ import { Dropdown } from "primereact/dropdown";
 import Form from "react-bootstrap/Form";
 import { Calendar } from "primereact/calendar";
 export const ExpenseManager = (props) => {
-	console.log(props);
 	const [expense, setExpense] = useState({
 		title: "",
 		expDate: "",
@@ -36,7 +35,6 @@ export const ExpenseManager = (props) => {
 
 	const clickHandler = (ev) => {
 		props.onExpCreated(expense);
-		console.log("current exp value is", expense);
 		//code to save to database
 	};
 	return (

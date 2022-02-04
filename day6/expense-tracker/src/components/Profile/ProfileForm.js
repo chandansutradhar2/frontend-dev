@@ -76,8 +76,6 @@ import "./ProfileForm.css";
 // };
 
 export const ProfileForm = () => {
-	console.log("profile renders");
-
 	const [profile, setProfile] = useState({
 		fullName: "",
 		email: "",
@@ -100,7 +98,6 @@ export const ProfileForm = () => {
 			setToggleState(true);
 			setFieldType("text");
 		}
-		console.log(toggleState);
 	};
 
 	return (

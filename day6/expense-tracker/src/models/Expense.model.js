@@ -4,8 +4,7 @@ export class Expense {
 	createdBy;
 	category;
 	amount;
-	transactionType;
-	constructor(title, expDate, createdBy, category, amount, transactionType) {
+	constructor(title, expDate, createdBy, category, amount) {
 		this.title = title;
 		this.expDate = expDate;
 		this.createdBy = createdBy;

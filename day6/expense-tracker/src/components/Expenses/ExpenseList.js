@@ -1,12 +1,17 @@
 import { ExpenseItem } from "./ExpenseItem";
 import { Card } from "primereact/card";
-import { Expense, TRANSACTION_TYPE } from "../../models/Expense.model";
+
 export const ExpenseList = (props) => {
-	console.log(props.expenses);
+	console.log("ExpenseList rendered with props", props);
+
 	return (
 		<div style={{ marginTop: "2rem" }}>
-			<Card subTitle="Expense/Income List">
-				<div style={{ display: "flex", flexDirection: "column" }}></div>
+			<Card subTitle={props.title}>
+				<div style={{ display: "flex", flexDirection: "column" }}>
+					{props.expenses.map((expItem, idx) => {
+						return <ExpenseItem key={idx} expense={expItem} />;
+					})}
+				</div>
 			</Card>
 		</div>
 	);
