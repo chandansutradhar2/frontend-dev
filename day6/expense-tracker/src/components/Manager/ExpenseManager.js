@@ -6,7 +6,8 @@ import { InputNumber } from "primereact/inputnumber";
 import { Dropdown } from "primereact/dropdown";
 import Form from "react-bootstrap/Form";
 import { Calendar } from "primereact/calendar";
-export function Manager() {
+export const ExpenseManager = (props) => {
+	console.log(props);
 	const [expense, setExpense] = useState({
 		title: "",
 		expDate: "",
@@ -31,6 +32,12 @@ export function Manager() {
 			...prevState,
 			category: ev.target.value,
 		}));
+	};
+
+	const clickHandler = (ev) => {
+		props.onExpCreated(expense);
+		console.log("current exp value is", expense);
+		//code to save to database
 	};
 	return (
 		<div className="card">
@@ -91,8 +98,12 @@ export function Manager() {
 						/>
 					</span>
 				</form>
-				<Button label="Add Expense" className="p-button-danger" />
+				<Button
+					label="Add Expense"
+					onClick={clickHandler}
+					className="p-button-danger"
+				/>
 			</Fieldset>
 		</div>
 	);
-}
+};

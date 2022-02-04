@@ -1,4 +1,5 @@
-import logo from "./logo.svg";
+import React, { useState } from "react";
+
 import "./App.css";
 import {
 	Investment,
@@ -8,11 +9,37 @@ import {
 } from "./models/Investment.model";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Manager } from "./components/Manager/ExpenseManager";
+import { Expense } from "./models/Expense.model";
+import { ExpenseManager } from "./components/Manager/ExpenseManager";
 import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
 
 function App() {
+	let expenses = [
+		new Expense(
+			"Pizza for samaya",
+			new Date("2022,2,2").toString(),
+			"chandan",
+			"general",
+			499,
+			TRANSACTION_TYPE.ONLINE.name,
+		),
+		new Expense(
+			"Car Loan ",
+			new Date("2022,2,5").toString(),
+			"chandan",
+			"credit",
+			13400,
+			TRANSACTION_TYPE.CREDIT.name,
+		),
+	];
+	const [expense, setExpense] = useState({
+		title: "",
+		expDate: "",
+		category: "Household Exp",
+		amount: 0,
+	});
+
 	let products = [
 		{
 			code: "c001",
@@ -21,10 +48,16 @@ function App() {
 			quantity: 10,
 		},
 	];
+
+	const onExpenseAdded = (value) => {
+		console.log(value);
+		expenses.push(value);
+	};
+
 	return (
 		<div className="container">
-			<Manager />
-			<ExpenseList />
+			<ExpenseManager onExpCreated={onExpenseAdded} />
+			<ExpenseList expenses={expenses} />
 			{/* <ProfileForm /> */}
 		</div>
 	);
