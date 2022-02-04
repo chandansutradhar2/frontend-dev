@@ -23,9 +23,9 @@ function App() {
 	];
 	return (
 		<div className="container">
-			{/* <Manager />
-			<ExpenseList /> */}
-			<ProfileForm />
+			<Manager />
+			<ExpenseList />
+			{/* <ProfileForm /> */}
 		</div>
 	);
 }

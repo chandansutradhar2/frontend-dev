@@ -13,15 +13,15 @@ export const ExpenseItem = (props) => {
 	//DO NOT CHANGE PROPS DIRECTLY EVEN IF ITS AN OBJECT
 	// console.log(props.expense.amount);
 
-	setTimeout(() => {
-		//setAmount(amount + 500);
-		//spread operator which iterate over a given object and initialize the object
-		//setExpense({ ...expense, amount: 5000 });
-		setExpense((prevState) => ({
-			...prevState,
-			amount: 7000,
-		}));
-	}, 5000);
+	// setTimeout(() => {
+	// 	//setAmount(amount + 500);
+	// 	//spread operator which iterate over a given object and initialize the object
+	// 	//setExpense({ ...expense, amount: 5000 });
+	// 	setExpense((prevState) => ({
+	// 		...prevState,
+	// 		amount: 7000,
+	// 	}));
+	// }, 5000);
 
 	let date = new Date(expense.expDate);
 	let month = date.toLocaleDateString("default", { month: "short" });

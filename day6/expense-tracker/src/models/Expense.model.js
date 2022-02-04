@@ -11,14 +11,12 @@ export class Expense {
 		this.createdBy = createdBy;
 		this.category = category;
 		this.amount = amount;
-		this.transactionType = transactionType;
 	}
 }
 
 export class TRANSACTION_TYPE {
 	static ONLINE = new TRANSACTION_TYPE("ONLINE");
 	static OFFLINE = new TRANSACTION_TYPE("OFFLINE");
-	static CREDIT = new TRANSACTION_TYPE("CREDIT");
 	constructor(name) {
 		this.name = name;
 	}
