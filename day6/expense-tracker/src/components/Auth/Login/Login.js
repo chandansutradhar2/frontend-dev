@@ -2,7 +2,7 @@ import "./Login.css";
 
 export const Login = () => {
 	return (
-		<>
+		<div className="login">
 			<div className="wrapper fadeInDown">
 				<div id="formContent">
 					<h2 className="active"> Sign In </h2>
@@ -41,6 +41,6 @@ export const Login = () => {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
