@@ -29,6 +29,10 @@ export const ExpenseManager = (props) => {
 		setExpense({});
 		//code to save to database
 	};
+
+	const cancelEventHandler = () => {
+		setExpense({});
+	};
 	return (
 		<div className="card">
 			<Fieldset legend="Add Income/Expenses" toggleable>
@@ -92,6 +96,12 @@ export const ExpenseManager = (props) => {
 					label={buttonLabel}
 					onClick={clickHandler}
 					className="p-button-danger"
+				/>
+				<Button
+					style={{ marginLeft: "1em" }}
+					icon="pi pi-times"
+					onClick={cancelEventHandler}
+					className="p-button-rounded p-button-danger p-button-outlined"
 				/>
 			</Fieldset>
 		</div>
