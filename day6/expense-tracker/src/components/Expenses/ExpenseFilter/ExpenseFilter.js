@@ -15,6 +15,11 @@ export const ExpenseFilter = (props) => {
 		props.onFilterEvent(filteredExpenses);
 	};
 
+	const showAlert = (ev) => {
+		alert("filter by date clicked");
+		console.log(ev);
+	};
+
 	return (
 		<div
 			style={{ display: "grid", gridTemplateColumns: "10% 30% 20% 20% 20%" }}
@@ -34,7 +39,12 @@ export const ExpenseFilter = (props) => {
 			<Button
 				icon="pi pi-times"
 				className="p-button-rounded p-button-danger p-button-text"
-				onClick={() => {}}
+				onClick={() => props.clearFilterEvent()}
+			/>
+			<Button
+				label="Date Filter"
+				className="p-button-primary"
+				onClick={showAlert}
 			/>
 		</div>
 	);

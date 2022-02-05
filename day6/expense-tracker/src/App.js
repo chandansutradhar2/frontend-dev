@@ -13,7 +13,7 @@ import { Expense, TRANSACTION_TYPE } from "./models/Expense.model";
 import { ExpenseManager } from "./components/Manager/ExpenseManager";
 import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
-
+import { Login } from "./components/Auth/Login/Login";
 function App() {
 	let expenseArr = [
 		new Expense(
@@ -32,6 +32,7 @@ function App() {
 		),
 	];
 
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [expense, setExpense] = useState();
 	const [filteredExpenses, setFilteredExpenses] = useState(expenseArr);
 	const [expenses, setExpenses] = useState(expenseArr);
@@ -78,19 +79,38 @@ function App() {
 	};
 
 	const clearFilterEvent = () => {
-		debugger;
+		alert("event recieved from expenseList");
 		setFilteredExpenses(expenses);
+	};
+
+	const renderUI = () => {
+		if (isLoggedIn) {
+			return (
+				<>
+					<ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
+					<ExpenseList
+						editHandler={onEditEventRecieved}
+						expenses={filteredExpenses}
+						filterEvent={onFilteredEvent}
+						clearFilterEvent={clearFilterEvent}
+					/>{" "}
+				</>
+			);
+		} else {
+			return <Login />;
+		}
 	};
 
 	return (
 		<div className="container">
-			<ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
+			{renderUI()}
+			{/* <ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
 			<ExpenseList
 				editHandler={onEditEventRecieved}
 				expenses={filteredExpenses}
 				filterEvent={onFilteredEvent}
 				clearFilterEvent={clearFilterEvent}
-			/>
+			/> */}
 			{/* <ProfileForm /> */}
 		</div>
 	);
