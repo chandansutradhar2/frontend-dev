@@ -8,10 +8,13 @@ import Form from "react-bootstrap/Form";
 import { Calendar } from "primereact/calendar";
 export const ExpenseManager = (props) => {
 	const [expense, setExpense] = useState(props.expense);
+	const [buttonLabel, setButtonLabel] = useState("Add Expenses");
 	console.log("rerender", props.expense);
 	useEffect(() => {
 		setExpense(props.expense);
-		console.log("useEffect invoked");
+		props.expense === undefined
+			? setButtonLabel("Add Expense")
+			: setButtonLabel("Update Expense");
 	}, [props.expense]);
 
 	const categoryHandler = (ev) => {
@@ -86,7 +89,7 @@ export const ExpenseManager = (props) => {
 					</span>
 				</form>
 				<Button
-					label="Add Expense"
+					label={buttonLabel}
 					onClick={clickHandler}
 					className="p-button-danger"
 				/>
