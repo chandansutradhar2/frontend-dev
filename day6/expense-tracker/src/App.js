@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import {
@@ -15,6 +15,7 @@ import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
 import { Login } from "./components/Auth/Login/Login";
 import { Header } from "./components/Header/Header";
+
 function App() {
 	let expenseArr = [
 		new Expense(
@@ -104,17 +105,19 @@ function App() {
 	// };
 
 	return (
-		<div className="container">
+		<>
 			<Header />
-			<ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
-			<ExpenseList
-				editHandler={onEditEventRecieved}
-				expenses={filteredExpenses}
-				filterEvent={onFilteredEvent}
-				clearFilterEvent={clearFilterEvent}
-			/>
-			{/* <ProfileForm /> */}
-		</div>
+			<div className="container">
+				{/* <ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
+				<ExpenseList
+					editHandler={onEditEventRecieved}
+					expenses={filteredExpenses}
+					filterEvent={onFilteredEvent}
+					clearFilterEvent={clearFilterEvent}
+				/> */}
+				{/* <ProfileForm /> */}
+			</div>
+		</>
 	);
 }
 
