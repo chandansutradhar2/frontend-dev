@@ -1,5 +1,6 @@
 import { ExpenseItem } from "./ExpenseItem";
 import { Card } from "primereact/card";
+import { ExpenseFilter } from "./ExpenseFilter/ExpenseFilter";
 
 export const ExpenseList = (props) => {
 	console.log("ExpenseList rendered with props", props);
@@ -7,8 +8,18 @@ export const ExpenseList = (props) => {
 	const handleEvent = (index) => {
 		props.editHandler(index);
 	};
+
+	const filterHandler = (filteredExpenses) => {
+		alert("filter expenses recieved" + JSON.stringify(filteredExpenses));
+		props.filterEvent(filteredExpenses);
+	};
+
+	const clearFilterEvent = () => {
+		props.clearFilterEvent();
+	};
 	return (
 		<div style={{ marginTop: "2rem" }}>
+			<ExpenseFilter expenses={props.expenses} onFilterEvent={filterHandler} />
 			<Card subTitle={props.title}>
 				<div style={{ display: "flex", flexDirection: "column" }}>
 					{props.expenses.map((expItem, idx) => {
@@ -17,6 +28,9 @@ export const ExpenseList = (props) => {
 								key={idx}
 								expense={expItem}
 								editHandler={() => handleEvent(idx)}
+								clearFilterEvent={() =>
+									alert("event recieved from expense filter")
+								}
 							/>
 						);
 					})}

@@ -15,25 +15,7 @@ import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
 
 function App() {
-	// let expenseArr = [
-	// 	new Expense(
-	// 		"Pizza for samaya",
-	// 		new Date("2022,2,2").toString(),
-	// 		"chandan",
-	// 		"general",
-	// 		499,
-	// 	),
-	// 	new Expense(
-	// 		"Car Loan ",
-	// 		new Date("2022,2,5").toString(),
-	// 		"chandan",
-	// 		"credit",
-	// 		13400,
-	// 	),
-	// ];
-
-	const [expense, setExpense] = useState();
-	const [expenses, setExpenses] = useState([
+	let expenseArr = [
 		new Expense(
 			"Pizza for samaya",
 			new Date("2022,2,2"),
@@ -48,7 +30,11 @@ function App() {
 			"Travelling Exp",
 			13400,
 		),
-	]);
+	];
+
+	const [expense, setExpense] = useState();
+	const [filteredExpenses, setFilteredExpenses] = useState(expenseArr);
+	const [expenses, setExpenses] = useState(expenseArr);
 
 	const onExpenseAdded = (value) => {
 		//check if the item exists inside the array
@@ -85,10 +71,26 @@ function App() {
 		setExpense(expenses[value]);
 	};
 
+	const onFilteredEvent = (filteredExp) => {
+		const tmpFilteredExpenseCopy = filteredExp;
+		setFilteredExpenses(tmpFilteredExpenseCopy);
+		debugger;
+	};
+
+	const clearFilterEvent = () => {
+		debugger;
+		setFilteredExpenses(expenses);
+	};
+
 	return (
 		<div className="container">
 			<ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
-			<ExpenseList editHandler={onEditEventRecieved} expenses={expenses} />
+			<ExpenseList
+				editHandler={onEditEventRecieved}
+				expenses={filteredExpenses}
+				filterEvent={onFilteredEvent}
+				clearFilterEvent={clearFilterEvent}
+			/>
 			{/* <ProfileForm /> */}
 		</div>
 	);

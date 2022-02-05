@@ -32,11 +32,6 @@ export const ExpenseManager = (props) => {
 	};
 
 	const cancelEventHandler = () => {
-		//setState for expense tp null with prev state so that UI can be rerendered
-		// setExpense((prevState) => ({
-		// 	...prevState,
-
-		// }));
 		setExpense(null);
 	};
 

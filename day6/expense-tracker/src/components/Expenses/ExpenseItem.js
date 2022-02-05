@@ -1,5 +1,5 @@
 import "./ExpenseItem.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "primereact/button";
 
 export const ExpenseItem = (props) => {
@@ -11,6 +11,9 @@ export const ExpenseItem = (props) => {
 	//another way in bulk
 	const [expense, setExpense] = useState(props.expense);
 
+	useEffect(() => {
+		setExpense(props.expense);
+	}, [props.expense]);
 	//DO NOT CHANGE PROPS DIRECTLY EVEN IF ITS AN OBJECT
 	// console.log(props.expense.amount);
 
