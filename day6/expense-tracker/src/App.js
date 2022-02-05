@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Link, BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+
+import { InvestmentView } from "./components/Investment/Investment";
+import { FinanceView } from "./components/FinancePlanner/FinancePlanner";
 
 import "./App.css";
 import {
@@ -15,6 +19,7 @@ import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
 import { Login } from "./components/Auth/Login/Login";
 import { Header } from "./components/Header/Header";
+import { Home } from "./components/Home/Home";
 
 function App() {
 	let expenseArr = [
@@ -107,16 +112,7 @@ function App() {
 	return (
 		<>
 			<Header />
-			<div className="container">
-				{/* <ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
-				<ExpenseList
-					editHandler={onEditEventRecieved}
-					expenses={filteredExpenses}
-					filterEvent={onFilteredEvent}
-					clearFilterEvent={clearFilterEvent}
-				/> */}
-				{/* <ProfileForm /> */}
-			</div>
+			<Outlet />
 		</>
 	);
 }
