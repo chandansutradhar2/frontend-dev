@@ -15,7 +15,6 @@ import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
 
 function App() {
-	const [title, setTile] = useState("Expense list");
 	// let expenseArr = [
 	// 	new Expense(
 	// 		"Pizza for samaya",
@@ -89,11 +88,7 @@ function App() {
 	return (
 		<div className="container">
 			<ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
-			<ExpenseList
-				editHandler={onEditEventRecieved}
-				title={title}
-				expenses={expenses}
-			/>
+			<ExpenseList editHandler={onEditEventRecieved} expenses={expenses} />
 			{/* <ProfileForm /> */}
 		</div>
 	);

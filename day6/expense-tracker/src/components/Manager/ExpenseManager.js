@@ -6,10 +6,11 @@ import { InputNumber } from "primereact/inputnumber";
 import { Dropdown } from "primereact/dropdown";
 import Form from "react-bootstrap/Form";
 import { Calendar } from "primereact/calendar";
+import { HideButton, ShowButton } from "./ClearButton";
 export const ExpenseManager = (props) => {
 	const [expense, setExpense] = useState(props.expense);
 	const [buttonLabel, setButtonLabel] = useState("Add Expenses");
-	console.log("rerender", props.expense);
+
 	useEffect(() => {
 		setExpense(props.expense);
 		props.expense === undefined
@@ -26,13 +27,27 @@ export const ExpenseManager = (props) => {
 
 	const clickHandler = (ev) => {
 		props.onExpCreated(expense);
-		setExpense({});
+		setExpense(undefined);
 		//code to save to database
 	};
 
 	const cancelEventHandler = () => {
-		setExpense({});
+		//setState for expense tp null with prev state so that UI can be rerendered
+		// setExpense((prevState) => ({
+		// 	...prevState,
+
+		// }));
+		setExpense(null);
 	};
+
+	const showHideButton = () => {
+		return expense ? (
+			<ShowButton cancelEventHandler={cancelEventHandler} />
+		) : (
+			<HideButton />
+		);
+	};
+
 	return (
 		<div className="card">
 			<Fieldset legend="Add Income/Expenses" toggleable>
@@ -97,12 +112,7 @@ export const ExpenseManager = (props) => {
 					onClick={clickHandler}
 					className="p-button-danger"
 				/>
-				<Button
-					style={{ marginLeft: "1em" }}
-					icon="pi pi-times"
-					onClick={cancelEventHandler}
-					className="p-button-rounded p-button-danger p-button-outlined"
-				/>
+				{showHideButton()}
 			</Fieldset>
 		</div>
 	);
