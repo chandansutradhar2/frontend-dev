@@ -33,19 +33,20 @@ function App() {
 	// 	),
 	// ];
 
+	const [expense, setExpense] = useState();
 	const [expenses, setExpenses] = useState([
 		new Expense(
 			"Pizza for samaya",
-			new Date("2022,2,2").toString(),
+			new Date("2022,2,2"),
 			"chandan",
-			"general",
+			"Child's Exp",
 			499,
 		),
 		new Expense(
 			"Car Loan ",
-			new Date("2022,2,5").toString(),
+			new Date("2022,2,5"),
 			"chandan",
-			"credit",
+			"Travelling Exp",
 			13400,
 		),
 	]);
@@ -81,10 +82,18 @@ function App() {
 		//setExpenses((prevState)=>expenses.map(comparer logic and function))//will not work cause of overhead
 	};
 
+	const onEditEventRecieved = (value) => {
+		setExpense(expenses[value]);
+	};
+
 	return (
 		<div className="container">
-			<ExpenseManager onExpCreated={onExpenseAdded} />
-			<ExpenseList title={title} expenses={expenses} />
+			<ExpenseManager expense={expense} onExpCreated={onExpenseAdded} />
+			<ExpenseList
+				editHandler={onEditEventRecieved}
+				title={title}
+				expenses={expenses}
+			/>
 			{/* <ProfileForm /> */}
 		</div>
 	);

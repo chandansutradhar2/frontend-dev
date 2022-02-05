@@ -1,5 +1,6 @@
 import "./ExpenseItem.css";
 import React, { useState } from "react";
+import { Button } from "primereact/button";
 
 export const ExpenseItem = (props) => {
 	//one way of implementing state individually
@@ -35,7 +36,19 @@ export const ExpenseItem = (props) => {
 					<strong>{month}</strong>
 				</div>
 				<div>{expense.title}</div>
-				<div>&#8377; {expense.amount}</div>
+				<div>{expense.category}</div>
+				<div className="last-row">
+					<span>&#8377; {expense.amount}</span>
+					<Button
+						icon="pi pi-times"
+						className="p-button-rounded p-button-danger p-button-outlined"
+					/>
+					<Button
+						onClick={props.editHandler}
+						icon="pi pi-pencil"
+						className="p-button-rounded p-button-success p-button-outlined"
+					/>
+				</div>
 			</div>
 		</div>
 	);

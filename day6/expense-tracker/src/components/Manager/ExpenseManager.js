@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fieldset } from "primereact/fieldset";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
@@ -7,24 +7,12 @@ import { Dropdown } from "primereact/dropdown";
 import Form from "react-bootstrap/Form";
 import { Calendar } from "primereact/calendar";
 export const ExpenseManager = (props) => {
-	const [expense, setExpense] = useState({
-		title: "",
-		expDate: "",
-		category: "Household Exp",
-		amount: 0,
-	});
-
-	const categories = [
-		"Household Exp",
-		"Entertainment Exp",
-		"Travelling Exp",
-		"Mobile Exp",
-		"EMI's",
-		"Loan",
-		"Child Education Exp",
-		"Insuarance Exp",
-		"Investment Exp",
-	];
+	const [expense, setExpense] = useState(props.expense);
+	console.log("rerender", props.expense);
+	useEffect(() => {
+		setExpense(props.expense);
+		console.log("useEffect invoked");
+	}, [props.expense]);
 
 	const categoryHandler = (ev) => {
 		setExpense((prevState) => ({
@@ -35,6 +23,7 @@ export const ExpenseManager = (props) => {
 
 	const clickHandler = (ev) => {
 		props.onExpCreated(expense);
+		setExpense({});
 		//code to save to database
 	};
 	return (
@@ -44,7 +33,7 @@ export const ExpenseManager = (props) => {
 					<span className="p-float-label m-2">
 						<InputText
 							placeholder="Expense Title"
-							value={expense.title}
+							value={expense?.title || ""}
 							onChange={(e) =>
 								setExpense((prevState) => ({
 									...prevState,
@@ -57,7 +46,7 @@ export const ExpenseManager = (props) => {
 						<Calendar
 							id="icon"
 							placeholder="Exp Date"
-							value={expense.expDate}
+							value={expense?.expDate || ""}
 							dateFormat="dd/mm/yy"
 							showIcon
 							onChange={(e) =>
@@ -70,7 +59,7 @@ export const ExpenseManager = (props) => {
 					</div>
 					<Form.Select
 						aria-label="Expenses"
-						value={expense.category}
+						value={expense?.category}
 						onChange={categoryHandler}
 					>
 						<option value="HouseHold Exp">Household Exp</option>
@@ -82,7 +71,7 @@ export const ExpenseManager = (props) => {
 					</Form.Select>
 					<span className="p-float-label m-2">
 						<InputNumber
-							value={expense.amount}
+							value={expense?.amount}
 							mode="currency"
 							currency="INR"
 							currencyDisplay="code"
