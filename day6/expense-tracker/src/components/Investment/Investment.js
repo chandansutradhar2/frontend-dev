@@ -17,6 +17,14 @@ export const InvestmentView = () => {
 };
 
 export function MutualFund() {
+	const cardStyle = {
+		marginRight: "10px",
+	};
+
+	if (true) {
+		cardStyle.marginRight = "20px";
+	}
+
 	const [mutualfunds, setMutualFunds] = useState([]);
 
 	useEffect(() => {
@@ -53,7 +61,7 @@ export function MutualFund() {
 					{mutualfunds.map((ele, id) => {
 						return (
 							<Card
-								style={{ marginRight: "10px" }}
+								style={cardStyle}
 								key={id}
 								title={ele.name}
 								subTitle="Subtitle"
