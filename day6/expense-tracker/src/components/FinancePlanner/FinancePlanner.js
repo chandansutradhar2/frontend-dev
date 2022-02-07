@@ -1,3 +1,7 @@
 export const FinanceView = () => {
-	return <h2>Finance View Loaded</h2>;
+	return (
+		<div className="container">
+			<h3>Finance Planning View</h3>
+		</div>
+	);
 };

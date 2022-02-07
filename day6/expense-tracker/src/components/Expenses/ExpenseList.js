@@ -18,7 +18,7 @@ export const ExpenseList = (props) => {
 		props.clearFilterEvent();
 	};
 	return (
-		<div style={{ marginTop: "2rem" }}>
+		<div style={{ margin: "10rem" }}>
 			<ExpenseFilter
 				clearFilterEvent={props.clearFilterEvent}
 				expenses={props.expenses}
