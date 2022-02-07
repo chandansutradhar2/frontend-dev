@@ -4,11 +4,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
-import { InvestmentView } from "./components/Investment/Investment";
-import { FinanceView } from "./components/FinancePlanner/FinancePlanner";
-import { ProfileForm } from "./components/Profile/ProfileForm";
-import { ExpenseList } from "./components/Expenses/ExpenseList";
 
 ReactDOM.render(
 	<React.StrictMode>

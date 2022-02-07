@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
 	ELS,
@@ -118,6 +118,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Header />
+
 			<Routes>
 				<Route path="/" element={<Home />} exact />
 				<Route path="expense" element={<ExpenseList expenses={[]} />} />

@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { useParams, useNavigate } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
 	let navigate = useNavigate();
@@ -15,7 +13,9 @@ export const Header = () => {
 	return (
 		<>
 			<Navbar bg="dark" variant="dark" fixed="top">
-				<Navbar.Brand href="#home">FinanceGuru</Navbar.Brand>
+				<Navbar.Brand onClick={() => navigateHandler("/")}>
+					FinanceGuru
+				</Navbar.Brand>
 				<Nav className="me-auto">
 					<Nav.Link onClick={() => navigateHandler("/expense")}>
 						Expense Tracker
