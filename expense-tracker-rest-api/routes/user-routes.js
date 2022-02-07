@@ -23,7 +23,7 @@ router.post("/register", (req, res, next) => {
 
 	console.log(fullName, dob, email, mobileNo, isSalaried);
 	//req.body.someprop ? res.status(200).send(true) : res.status(401).send(false);
-	req.body.someprop
+	req.body.email
 		? res.status(200).send({ status: true, result: "success" })
 		: res.status(200).send({
 				status: false,

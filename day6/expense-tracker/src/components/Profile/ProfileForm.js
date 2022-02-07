@@ -107,7 +107,7 @@ export const ProfileForm = () => {
 		axios
 			.post("http://localhost:8000/user/register", profile)
 			.then((res) => {
-				res.data.status ? setProfile({}) : console.log(res.data.result);
+				res.data.status ? setProfile(null) : console.log(res.data.result);
 			})
 			.catch((err) => {
 				console.log(err, "failed to save data");

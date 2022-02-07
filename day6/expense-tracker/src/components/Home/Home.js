@@ -4,7 +4,7 @@ import { Header } from "../Header/Header";
 export const Home = () => {
 	return (
 		<div style={{ margin: "75px" }}>
-			<p>Home Component</p>
+			<h1 className="animate__animated animate__fadeInDown">Home Component</h1>
 		</div>
 	);
 };
