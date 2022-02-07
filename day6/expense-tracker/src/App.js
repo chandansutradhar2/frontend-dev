@@ -20,6 +20,7 @@ import { ProfileForm } from "./components/Profile/ProfileForm";
 import { Login } from "./components/Auth/Login/Login";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
+import { Switch } from "react-router-dom";
 
 function App() {
 	let expenseArr = [
@@ -110,10 +111,16 @@ function App() {
 	// };
 
 	return (
-		<>
+		<BrowserRouter>
 			<Header />
-			<Outlet />
-		</>
+			<Routes>
+				<Route path="/" element={<Home />} exact />
+				<Route path="expense" element={<ExpenseList expenses={[]} />} />
+				<Route path="investment" element={<InvestmentView />} />
+				<Route path="finance" element={<FinanceView />} />
+				<Route path="profile" element={<ProfileForm />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

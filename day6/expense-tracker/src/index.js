@@ -12,15 +12,7 @@ import { ExpenseList } from "./components/Expenses/ExpenseList";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<App />} />
-				<Route path="expense" element={<ExpenseList expenses={[]} />} />
-				<Route path="investment" element={<InvestmentView />} />
-				<Route path="finance" element={<FinanceView />} />
-				<Route path="profile" element={<ProfileForm />} />
-			</Routes>
-		</BrowserRouter>
+		<App />
 	</React.StrictMode>,
 	document.getElementById("root"),
 );
