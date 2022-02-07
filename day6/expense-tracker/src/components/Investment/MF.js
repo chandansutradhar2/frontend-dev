@@ -19,10 +19,8 @@ export function MutualFund() {
 				if (res.data) {
 					let mfs = [];
 					res.data.forEach((element) => {
-						console.log();
 						mfs.push(element);
 					});
-
 					setMutualFunds(mfs);
 				} else {
 					alert("failed to get mutual funds data");
@@ -30,6 +28,7 @@ export function MutualFund() {
 			})
 			.catch((err) => alert(err));
 	}, []);
+
 	if (mutualfunds.length > 0) {
 		return (
 			<div className="container">

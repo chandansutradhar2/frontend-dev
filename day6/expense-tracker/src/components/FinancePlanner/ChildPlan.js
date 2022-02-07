@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 export class ChildPlan extends React.Component {
@@ -8,6 +9,16 @@ export class ChildPlan extends React.Component {
 
 	componentDidMount() {
 		console.log("ChildPlan did mount");
+		axios
+			.get("http://localhost:8000/investment/getAllChildPlan")
+			.then((response) => {
+				if (response.data) {
+					console.log(response.data);
+				}
+			})
+			.catch((err) => {
+				console.log("error encountered ", err);
+			});
 	}
 
 	componentDidUpdate() {
@@ -31,6 +42,6 @@ export class ChildPlan extends React.Component {
 	}
 
 	render() {
-		return <h5>Child Plan View</h5>;
+		return <h6>Child's Future investment Plan</h6>;
 	}
 }
