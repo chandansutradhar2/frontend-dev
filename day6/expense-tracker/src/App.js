@@ -6,7 +6,7 @@ import {
 	InvestmentView,
 	MutualFund,
 	NPS,
-} from "./components/Investment/Investment";
+} from "./components/Investment/InvestmentUI";
 import { FinanceView } from "./components/FinancePlanner/FinancePlanner";
 
 import "./App.css";
@@ -16,8 +16,6 @@ import {
 	INVESTMENT_FREQUENCY,
 	INVESTMENT_TYPE,
 } from "./models/Investment.model";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 import { Expense, TRANSACTION_TYPE } from "./models/Expense.model";
 import { ExpenseManager } from "./components/Manager/ExpenseManager";
 import { ExpenseList } from "./components/Expenses/ExpenseList";
@@ -26,6 +24,9 @@ import { Login } from "./components/Auth/Login/Login";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { Switch } from "react-router-dom";
+import { ChildPlan } from "./components/FinancePlanner/ChildPlan";
+import { RetirementPlan } from "./components/FinancePlanner/RetirementPlan";
+import { FuturePlan } from "./components/FinancePlanner/FuturePlan";
 
 function App() {
 	let expenseArr = [
@@ -122,12 +123,12 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} exact />
 				<Route path="expense" element={<ExpenseList expenses={[]} />} />
-				<Route path="investment" element={<InvestmentView />}>
-					<Route path="mf" element={<MutualFund />} />
-					<Route path="els" element={<ELS />} />
-					<Route path="nps" element={<NPS />} />
+				<Route path="investment" element={<InvestmentView />} />
+				<Route path="finance" element={<FinanceView />}>
+					<Route path="childplan" element={<ChildPlan />} />
+					<Route path="retirementplan" element={<RetirementPlan />} />
+					<Route path="futureplan" element={<FuturePlan />} />
 				</Route>
-				<Route path="finance" element={<FinanceView />} />
 				<Route path="profile" element={<ProfileForm />} />
 			</Routes>
 		</BrowserRouter>

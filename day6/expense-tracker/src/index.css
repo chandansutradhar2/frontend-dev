@@ -1,5 +1,5 @@
 @import url("/node_modules/primeflex/primeflex.css");
-
+@import url("https://unpkg.com/primereact/resources/primereact.min.css");
 body {
 	background-color: #b8c1d3;
 	margin: 0;
