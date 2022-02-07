@@ -11,7 +11,7 @@ import { RadioButton } from "primereact/radiobutton";
 import { Card } from "primereact/card";
 import { Calendar } from "primereact/calendar";
 import { ToggleButton } from "primereact/togglebutton";
-
+import axios from "axios";
 import "./ProfileForm.css";
 
 // export const ProfileForm = () => {
@@ -100,6 +100,19 @@ export const ProfileForm = () => {
 		}
 	};
 
+	const onSave = () => {
+		//todo..
+		//check for data validation
+		//check fo data sanitization using 3rd party helper
+		axios
+			.post("http://localhost:8000/user/register", profile)
+			.then((res) => {
+				res.data.status ? setProfile({}) : console.log(res.data.result);
+			})
+			.catch((err) => {
+				console.log(err, "failed to save data");
+			});
+	};
 	return (
 		<Card>
 			<h1>Profile Form</h1>
@@ -214,7 +227,7 @@ export const ProfileForm = () => {
 				</div>
 			</div>
 			<div className="col-12 md:col-6">
-				<Button label="Save" />
+				<Button label="Save" onClick={onSave} />
 			</div>
 		</Card>
 	);
