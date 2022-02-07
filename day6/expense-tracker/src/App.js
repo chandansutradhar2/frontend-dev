@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Link, BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 
-import { InvestmentView } from "./components/Investment/Investment";
+import {
+	ELS,
+	InvestmentView,
+	MutualFund,
+	NPS,
+} from "./components/Investment/Investment";
 import { FinanceView } from "./components/FinancePlanner/FinancePlanner";
 
 import "./App.css";
@@ -116,7 +121,11 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} exact />
 				<Route path="expense" element={<ExpenseList expenses={[]} />} />
-				<Route path="investment" element={<InvestmentView />} />
+				<Route path="investment" element={<InvestmentView />}>
+					<Route path="mf" element={<MutualFund />} />
+					<Route path="els" element={<ELS />} />
+					<Route path="nps" element={<NPS />} />
+				</Route>
 				<Route path="finance" element={<FinanceView />} />
 				<Route path="profile" element={<ProfileForm />} />
 			</Routes>
