@@ -5,10 +5,15 @@ var express = require("express");
 var router = express.Router();
 
 router.post("/authenticate", (req, res, next) => {
-	res.status(200).send({
-		result: true,
-		token: "ye7hh-2832ey2-2e7237ey27e-2727272-377whd7whwed",
-	});
+	//use jwt - jsonwebtoken package to create unique token for indivdual user
+	if (req.body.email && req.body.password) {
+		res.status(200).send({
+			result: true,
+			token: "ye7hh-2832ey2-2e7237ey27e-2727272-377whd7whwed",
+		});
+	} else {
+		res.status(401).send({ result: false, error: "invalid credentials" });
+	}
 });
 
 router.post("/register", (req, res, next) => {

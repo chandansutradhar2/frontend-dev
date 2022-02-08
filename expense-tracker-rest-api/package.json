@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "formik": "^2.2.9",
+    "yup": "^0.32.11"
   }
 }
