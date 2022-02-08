@@ -16,8 +16,7 @@ const appReducer = (state = defaultState, action) => {
 			return newStateObj;
 		case ACTIONS.Types.LOGOUT_USER:
 			console.log(action);
-			let logoutVal = action.payload;
-			return logoutVal;
+			return { ...state, isLoggedIn: action.payload };
 		default:
 			return state;
 	}
