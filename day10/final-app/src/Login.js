@@ -1,4 +1,10 @@
-export const Login = (props) => {
+import { connect } from "react-redux";
+
+import ACTIONS from "./state-redux/action";
+import { useSelector, useDispatch } from "react-redux";
+
+export const Login = () => {
+	const dispatch = useDispatch();
 	return (
 		<>
 			<div className="container">
@@ -24,7 +30,7 @@ export const Login = (props) => {
 						<button
 							type="button"
 							className="btn btn-primary"
-							onClick={props.doLogin}
+							onClick={() => dispatch(ACTIONS.loginUser(true))}
 						>
 							Login
 						</button>
@@ -34,3 +40,5 @@ export const Login = (props) => {
 		</>
 	);
 };
+
+export default connect()(Login);

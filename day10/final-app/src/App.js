@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Provider } from "react-redux";
 
 import "./App.css";
 import "./variables.scss";
@@ -6,7 +7,9 @@ import "./variables.scss";
 import { Login } from "./Login";
 import ToDo from "./Todo";
 import { Home } from "./Home";
+import configureStore from "./state-redux/store";
 
+const store = configureStore();
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [counter, setCounter] = useState(0);
@@ -26,30 +29,10 @@ function App() {
 		setTodos(tmp);
 	};
 	return (
-		<div className="App">
-			<Login
-				doLogin={() => {
-					setIsLoggedIn(true);
-				}}
-			/>
-			<Home isLoggedIn={isLoggedIn} />
-			{/* <input
-				type="text"
-				placeholder="Enter new Todo"
-				onChange={(ev) => setTodo(ev.target.value)}
-				value={todo}
-			/>
-			<button onClick={add}>Update Todo</button>
-			<ToDo todos={todos} />
-
-			<div>
-				<span>
-					<h4>{counter}</h4>
-				</span>
-
-				<button onClick={increment}>Add</button>
-			</div> */}
-		</div>
+		<Provider store={store}>
+			<Login />
+			<Home />
+		</Provider>
 	);
 }
 
