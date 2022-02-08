@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import {
-	ELS,
-	InvestmentView,
-	MutualFund,
-	NPS,
-} from "./components/Investment/InvestmentUI";
+import { InvestmentView } from "./components/Investment/InvestmentUI";
 import { FinanceView } from "./components/FinancePlanner/FinancePlanner";
-
 import "./App.css";
-import {
-	Investment,
-	INVESTMENT_CATEGORY,
-	INVESTMENT_FREQUENCY,
-	INVESTMENT_TYPE,
-} from "./models/Investment.model";
-import { Expense, TRANSACTION_TYPE } from "./models/Expense.model";
-import { ExpenseManager } from "./components/Manager/ExpenseManager";
+import { Expense } from "./models/Expense.model";
 import { ExpenseList } from "./components/Expenses/ExpenseList";
 import { ProfileForm } from "./components/Profile/ProfileForm";
 import { Login } from "./components/Auth/NewLogin/Login";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
-
 import { ChildPlan } from "./components/FinancePlanner/ChildPlan";
 import { RetirementPlan } from "./components/FinancePlanner/RetirementPlan";
 import { FuturePlan } from "./components/FinancePlanner/FuturePlan";

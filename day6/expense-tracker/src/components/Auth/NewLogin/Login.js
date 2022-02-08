@@ -1,15 +1,18 @@
+import { useRef } from "react";
+import { useState } from "react";
+
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
-import { useRef } from "react";
-
-import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import { appConfig } from "../../../AppConfig";
 
 export function Login() {
+	let navigate = useNavigate();
+
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const toast = useRef();
@@ -28,6 +31,9 @@ export function Login() {
 						summary: "Login success",
 						detail: "Welcome back",
 					});
+					setTimeout(() => {
+						navigate("/");
+					}, 3000);
 				} else {
 				}
 			})
