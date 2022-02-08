@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import "./App.css";
+import "./variables.scss";
+
 import ToDo from "./Todo";
 
 function App() {

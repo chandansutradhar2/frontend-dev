@@ -1,0 +1,12 @@
+$primary: #44748a;
+$secondary: yellow;
+$warn: rgb(255, 115, 0);
+$danger: rgb(158, 36, 36);
+
+h1 {
+	color: $warn;
+}
+
+body {
+	background-color: $primary;
+}
