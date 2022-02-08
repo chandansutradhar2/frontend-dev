@@ -3,9 +3,12 @@ import { useState } from "react";
 import "./App.css";
 import "./variables.scss";
 
+import { Login } from "./Login";
 import ToDo from "./Todo";
+import { Home } from "./Home";
 
 function App() {
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [counter, setCounter] = useState(0);
 	const [todo, setTodo] = useState();
 	const [todos, setTodos] = useState([
@@ -24,7 +27,13 @@ function App() {
 	};
 	return (
 		<div className="App">
-			<input
+			<Login
+				doLogin={() => {
+					setIsLoggedIn(true);
+				}}
+			/>
+			<Home isLoggedIn={isLoggedIn} />
+			{/* <input
 				type="text"
 				placeholder="Enter new Todo"
 				onChange={(ev) => setTodo(ev.target.value)}
@@ -39,7 +48,7 @@ function App() {
 				</span>
 
 				<button onClick={increment}>Add</button>
-			</div>
+			</div> */}
 		</div>
 	);
 }
