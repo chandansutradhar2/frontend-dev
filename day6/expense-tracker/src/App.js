@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { InvestmentView } from "./components/Investment/InvestmentUI";
@@ -14,6 +14,8 @@ import { ChildPlan } from "./components/FinancePlanner/ChildPlan";
 import { RetirementPlan } from "./components/FinancePlanner/RetirementPlan";
 import { FuturePlan } from "./components/FinancePlanner/FuturePlan";
 import { PageNotFound } from "./utility/404/PageNotFound";
+
+export const UserContext = createContext();
 
 function App() {
 	let expenseArr = [
@@ -34,6 +36,11 @@ function App() {
 	];
 
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [user, setUser] = useState("Chandan Naresh");
+	const changeUser = () => {
+		alert("change user event recieved");
+	};
+
 	const [expense, setExpense] = useState();
 	const [filteredExpenses, setFilteredExpenses] = useState(expenseArr);
 	const [expenses, setExpenses] = useState(expenseArr);
@@ -119,29 +126,31 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<Header
-				doLogout={() => {
-					//todo: clean up token from localstorage, clean up userState,
-					localStorage.removeItem("token");
-					setIsLoggedIn(false);
-				}}
-				isLoggedIn={isLoggedIn}
-				applyDarkTheme={changeTheme}
-			/>
+			<UserContext.Provider value={changeUser}>
+				<Header
+					doLogout={() => {
+						//todo: clean up token from localstorage, clean up userState,
+						localStorage.removeItem("token");
+						setIsLoggedIn(false);
+					}}
+					isLoggedIn={isLoggedIn}
+					applyDarkTheme={changeTheme}
+				/>
 
-			<Routes>
-				<Route path="/" element={<Home />} exact />
-				<Route path="expense" element={<ExpenseList expenses={[]} />} />
-				<Route path="investment" element={<InvestmentView />} />
-				<Route path="finance" element={<FinanceView />}>
-					<Route path="childplan" element={<ChildPlan />} />
-					<Route path="retirementplan" element={<RetirementPlan />} />
-					<Route path="futureplan" element={<FuturePlan />} />
-				</Route>
-				<Route path="profile" element={<ProfileForm />} />
-				<Route path="login" element={<Login />} />
-				<Route path="*" element={<PageNotFound />} />
-			</Routes>
+				<Routes>
+					<Route path="/" element={<Home />} exact />
+					<Route path="expense" element={<ExpenseList expenses={[]} />} />
+					<Route path="investment" element={<InvestmentView />} />
+					<Route path="finance" element={<FinanceView />}>
+						<Route path="childplan" element={<ChildPlan />} />
+						<Route path="retirementplan" element={<RetirementPlan />} />
+						<Route path="futureplan" element={<FuturePlan />} />
+					</Route>
+					<Route path="profile" element={<ProfileForm />} />
+					<Route path="login" element={<Login />} />
+					<Route path="*" element={<PageNotFound />} />
+				</Routes>
+			</UserContext.Provider>
 		</BrowserRouter>
 	);
 }
