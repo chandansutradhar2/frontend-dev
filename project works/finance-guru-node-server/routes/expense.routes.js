@@ -5,5 +5,5 @@ var express = require("express");
 var router = express.Router();
 
 router.post("/add", expController.addExpense);
-//router.post("/all", usersController.createAccount);
+router.get("/get", expController.getExpenseById);
 module.exports = router;

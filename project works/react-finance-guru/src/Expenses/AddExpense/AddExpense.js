@@ -12,7 +12,7 @@ import { apiUrl } from "../../app.config";
 import "./AddExpense.css";
 import { UserContext } from "../../App";
 
-export const AddExpense = () => {
+export const AddExpense = (props) => {
 	const user = useContext(UserContext);
 
 	const recurringType = [
@@ -60,9 +60,12 @@ export const AddExpense = () => {
 					recurringOn: expense.recurringOn || null,
 				})
 				.then((r) => {
-					r.status === 200
-						? alert("expenses saved successfully")
-						: alert("failed to save expenses");
+					if (r.status === 200) {
+						props.newExpEvent(expense);
+						alert("expenses saved successfully");
+					} else {
+						alert("failed to save expense");
+					}
 				});
 		} else {
 			alert("please login first to save your expenses");

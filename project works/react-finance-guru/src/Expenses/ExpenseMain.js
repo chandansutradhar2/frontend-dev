@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { AddExpense } from "./AddExpense/AddExpense";
+import { ExpenseList } from "./ExpenseList/ExpenseList";
 
 export function ExpenseMain() {
 	// const [expenses, setExpenses] = useState();
-	// const [expense, setExpense] = useState();
+	const [expense, setExpense] = useState();
 
+	const newExpAdded = (exp) => {
+		setExpense(exp);
+	};
 	return (
 		<div
 			style={{
@@ -15,7 +19,8 @@ export function ExpenseMain() {
 				alignItems: "center",
 			}}
 		>
-			<AddExpense />
+			<AddExpense newExpEvent={newExpAdded} />
+			<ExpenseList onNewExpAdded={expense} />
 		</div>
 	);
 }

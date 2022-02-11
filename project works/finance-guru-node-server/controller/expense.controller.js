@@ -36,8 +36,9 @@ exports.addExpense = (req, res) => {
 						createdBy: req.body.createdBy,
 						title: req.body.title,
 						amount: req.body.amount,
-						category: req.body.expDate,
-						expDate: req.body.lastName,
+						category: req.body.category,
+						expDate: req.body.expDate,
+						isRecurring: false,
 						createdOn: Date.now(),
 				  });
 
@@ -51,6 +52,32 @@ exports.addExpense = (req, res) => {
 					},
 					(err) => res.status(400).send(err),
 				);
+		});
+	} else {
+		res.status(401).send("all mandatory information is  required");
+	}
+	//res.status(200).send("account created successfully");
+};
+
+exports.getExpenseById = (req, res) => {
+	if (req.query._id) {
+		client.connect(async () => {
+			//initialize connection with database collection
+
+			let cursor = await client.db("finance-guru").collection("expenses").find({
+				createdBy: req.query._id,
+			});
+
+			const docs = await cursor.toArray();
+			docs.length > 0
+				? res.status(200).send(docs)
+				: res.status(404).send("no expense found");
+			// .then(
+			// 	(re) => {
+			// 		res.status(200).send("account created successfully");
+			// 	},
+			// 	(err) => res.status(400).send(err),
+			// );
 		});
 	} else {
 		res.status(401).send("all mandatory information is  required");
