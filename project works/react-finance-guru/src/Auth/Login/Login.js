@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
@@ -6,6 +7,19 @@ export const Login = () => {
 
 	const handleLogin = () => {
 		//TO DO : LOGIN behaviour
+		axios
+			.post("http://localhost:4000/user/authenticate", {
+				email: email,
+				password: password,
+			})
+			.then((res) => {
+				if (res.status == 200) {
+					alert(res.data.token);
+				} else {
+					alert("invalid credentials");
+				}
+			})
+			.catch((err) => alert("invalid credentials"));
 	};
 
 	return (
