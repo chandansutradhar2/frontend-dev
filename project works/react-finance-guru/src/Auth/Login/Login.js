@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
 
-export const Login = () => {
+export const Login = (props) => {
 	let navigate = useNavigate();
 
 	const [email, setEmail] = useState("");
@@ -16,9 +18,10 @@ export const Login = () => {
 				password: password,
 			})
 			.then((res) => {
-				if (res.status == 200) {
+				if (res.status === 200) {
 					localStorage.setItem("token", res.data.token);
 					localStorage.setItem("user", JSON.stringify(res.data.user));
+					props.loginHandler();
 					navigate("/");
 				} else {
 					alert("invalid credentials");
@@ -30,7 +33,23 @@ export const Login = () => {
 	return (
 		<div style={{ width: "100vw", display: "flex", justifyContent: "center" }}>
 			<form style={{ width: "50%", paddingTop: "10%" }}>
-				<div className="mb-3">
+				<div className="field col-8">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">
+							<i className="pi pi-user"></i>
+						</span>
+						<span className="p-float-label">
+							<InputText
+								id="inputgroup"
+								type="text"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+							<label htmlFor="inputgroup">Email</label>
+						</span>
+					</div>
+				</div>
+				{/* <div className="mb-3">
 					<label className="form-label">Email address</label>
 					<input
 						type="email"
@@ -45,9 +64,9 @@ export const Login = () => {
 							Email Cannot be left blank
 						</div>
 					) : null}
-				</div>
+				</div> */}
 
-				<div className="mb-3">
+				{/* <div className="mb-3">
 					<label className="form-label">Password</label>
 					<input
 						type="password"
@@ -61,7 +80,23 @@ export const Login = () => {
 							Password Cannot be left blank
 						</div>
 					) : null}
+				</div> */}
+				<div className="field col-8">
+					<div className="p-inputgroup">
+						<span className="p-inputgroup-addon">
+							<i className="pi pi-user"></i>
+						</span>
+						<span className="p-float-label">
+							<Password
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								toggleMask
+							/>
+							<label htmlFor="inputgroup">Password</label>
+						</span>
+					</div>
 				</div>
+
 				<div className="mb-3">
 					<button
 						type="button"
@@ -69,6 +104,15 @@ export const Login = () => {
 						onClick={handleLogin}
 					>
 						Login
+					</button>
+				</div>
+				<div className="mb-3">
+					<button
+						type="button"
+						className="btn btn-link"
+						onClick={() => navigate("/register")}
+					>
+						New user? SignUp
 					</button>
 				</div>
 			</form>

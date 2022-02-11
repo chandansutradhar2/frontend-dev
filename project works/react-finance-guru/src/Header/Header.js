@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-export const Header = () => {
+export const Header = (props) => {
+	console.log(props.isLoggedIn);
+
+	const handleLogout = () => {
+		props.handleLogout();
+	};
+
 	return (
 		<ul>
 			<li>
@@ -16,7 +22,13 @@ export const Header = () => {
 				<Link to="/finance">Finance Planner</Link>
 			</li>
 			<li>
-				<Link to="/login">Login</Link>
+				{props.isLoggedIn ? (
+					<a href="" onClick={handleLogout}>
+						Logout
+					</a>
+				) : (
+					<Link to="/login">Login</Link>
+				)}
 			</li>
 		</ul>
 	);
