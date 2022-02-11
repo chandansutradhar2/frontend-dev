@@ -1,9 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 import { Header } from "./Header/Header";
 import { Home } from "./Home/Home";
 import { ExpenseMain } from "./Expenses/ExpenseMain";
+import { FinanceMain } from "./FinancePlanner/Finance";
+import { Login } from "./Auth/Login/Login";
+import { InvestmentMain } from "./Investment/Investment";
+
+import "./App.css";
 
 function App() {
 	return (
@@ -20,6 +24,9 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/expense" element={<ExpenseMain />} />
+					<Route path="/investment" element={<InvestmentMain />} />
+					<Route path="/finance" element={<FinanceMain />} />
+					<Route path="/login" element={<Login />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

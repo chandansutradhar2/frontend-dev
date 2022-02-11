@@ -15,6 +15,9 @@ export const Header = () => {
 			<li>
 				<Link to="/finance">Finance Planner</Link>
 			</li>
+			<li>
+				<Link to="/login">Login</Link>
+			</li>
 		</ul>
 	);
 };
