@@ -25,7 +25,10 @@ exports.getUserByEmail = (req, res) => {
 				let token = jwt.sign({ user: docs }, "somesecret", {
 					expiresIn: "1h",
 				});
-				res.status(200).send({ user: docs[0], token: token });
+
+				setTimeout(() => {
+					res.status(200).send({ user: docs[0], token: token });
+				}, 2000);
 			} else {
 				res.status(401).send("invalid credentials");
 			}
