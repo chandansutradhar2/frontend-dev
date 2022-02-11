@@ -8,20 +8,20 @@ export const Header = (props) => {
 	};
 
 	return (
-		<ul>
-			<li>
+		<ul className="ul">
+			<li className="li">
 				<Link to="/">Home</Link>
 			</li>
-			<li>
+			<li className="li">
 				<Link to="/expense">Expenses</Link>
 			</li>
-			<li>
+			<li className="li">
 				<Link to="/investment">Investment</Link>
 			</li>
-			<li>
+			<li className="li">
 				<Link to="/finance">Finance Planner</Link>
 			</li>
-			<li>
+			<li className="li">
 				{props.isLoggedIn ? (
 					<a href="" onClick={handleLogout}>
 						Logout

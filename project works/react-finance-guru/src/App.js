@@ -10,15 +10,24 @@ import { InvestmentMain } from "./Investment/Investment";
 import "./App.css";
 import { Register } from "./Auth/Register/Register";
 
-const UserContext = React.createContext(null);
+export const UserContext = React.createContext(null);
 
 function App() {
-	const [user, setUser] = useState();
+	const [user, setUser] = useState(null);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	useEffect(() => {
-		let token = localStorage.getItem("token");
-		token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+		try {
+			let token = localStorage.getItem("token");
+			let user = JSON.parse(localStorage.getItem("user"));
+			if (token && user) {
+				setIsLoggedIn(true);
+				setUser(user);
+				console.log(user);
+			}
+		} catch (error) {
+			setIsLoggedIn(false);
+		}
 	}, []);
 
 	const logout = () => {
@@ -31,26 +40,28 @@ function App() {
 		setIsLoggedIn(true);
 	};
 	return (
-		<BrowserRouter>
-			<Header isLoggedIn={isLoggedIn} handleLogout={logout} />
-			<div
-				style={{
-					marginTop: "3rem",
-					marginLeft: "1rem",
-					width: "100vw",
-					height: "100vh",
-				}}
-			>
-				<Routes>
-					<Route path="/" exact element={<Home />} />
-					<Route path="/expense" element={<ExpenseMain />} />
-					<Route path="/investment" element={<InvestmentMain />} />
-					<Route path="/finance" element={<FinanceMain />} />
-					<Route path="/login" element={<Login loginHandler={login} />} />
-					<Route path="/register" element={<Register />} />
-				</Routes>
-			</div>
-		</BrowserRouter>
+		<UserContext.Provider value={user}>
+			<BrowserRouter>
+				<Header isLoggedIn={isLoggedIn} handleLogout={logout} />
+				<div
+					style={{
+						marginTop: "3rem",
+						marginLeft: "1rem",
+						width: "100vw",
+						height: "100vh",
+					}}
+				>
+					<Routes>
+						<Route path="/" exact element={<Home />} />
+						<Route path="/expense" element={<ExpenseMain />} />
+						<Route path="/investment" element={<InvestmentMain />} />
+						<Route path="/finance" element={<FinanceMain />} />
+						<Route path="/login" element={<Login loginHandler={login} />} />
+						<Route path="/register" element={<Register />} />
+					</Routes>
+				</div>
+			</BrowserRouter>
+		</UserContext.Provider>
 	);
 }
 
