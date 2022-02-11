@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+	let navigate = useNavigate();
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -14,7 +17,9 @@ export const Login = () => {
 			})
 			.then((res) => {
 				if (res.status == 200) {
-					alert(res.data.token);
+					localStorage.setItem("token", res.data.token);
+					localStorage.setItem("user", JSON.stringify(res.data.user));
+					navigate("/");
 				} else {
 					alert("invalid credentials");
 				}
